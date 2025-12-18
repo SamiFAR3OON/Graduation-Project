@@ -1,0 +1,57 @@
+<!-- Hero Section -->
+<section class="fitlife-hero">
+  <div class="hero-overlay"></div>
+
+  <div class="hero-container">
+    <div class="hero-text">
+      <h1 class="hero-title">{{ module.FitLife_Fitness_App }}</h1>
+
+      <div class="hero-description">
+        {{ module.Description }}
+      </div>
+
+      <div class="hero-actions">
+        <a href="{{ module.url_field }}" class="hero-btn">
+          {{ module.button_text }}
+        </a>
+      </div>
+    </div>
+
+    {% if module.hero_image.src %}
+    <div class="hero-visual">
+      <img src="{{ module.hero_image.src }}" alt="{{ module.hero_image.alt }}">
+    </div>
+    {% endif %}
+  </div>
+</section>
+<!-- Features / MVP Section -->
+<section class="features-section">
+  <h2>App Features / MVP</h2>
+  <div class="features-container">
+    {% for i in range(1,4) %}
+      <div class="feature-card">
+        {% set icon = module["feature" ~ i ~ "_icon"] %}
+        {% if icon.src %}
+          <div class="feature-image">
+            <img src="{{ icon.src }}" alt="{{ module["feature" ~ i ~ "_title"] }}">
+          </div>
+        {% endif %}
+        <div class="feature-text">
+          <h3>{{ module["feature" ~ i ~ "_title"] }}</h3>
+          <p>{{ module["feature" ~ i ~ "_description"]|safe }}</p>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section class="contact-section">
+  <h2>{{ module.contact_title }}</h2>
+  <div class="contact-description">
+    {{ module.contact_description|safe }}
+  </div>
+  <a href="{{ module.contact_button_link }}" class="contact-btn">
+    {{ module.contact_button_text }}
+  </a>
+</section>
